@@ -1,3 +1,3 @@
-This docker-file is a part of an article [[How to] From Chisel to Bitstream](https://learn-fpga-easily.com/how-to-from-chisel-to-bitstream/) on my blog [Learn FPGA easily](https://learn-fpga-easily.com/).
+This docker-file is a part of articles : [How to install Chisel with Docker ?](https://learn-fpga-easily.com/how-to-install-chisel-with-docker/) and [[How to] From Chisel to Bitstream](https://learn-fpga-easily.com/how-to-from-chisel-to-bitstream/) on my blog [Learn FPGA easily](https://learn-fpga-easily.com/).
 
 In this article we develop a workflow using Chisel for design, Yosys for synthesis, Nextpnr for Place and route and Icestorm for bitstream generation.
