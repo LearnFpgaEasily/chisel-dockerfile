@@ -1,13 +1,10 @@
 FROM ubuntu:20.04
 
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Europe/Paris
 
-RUN apt-get update
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-RUN apt-get -q -y install curl zip unzip git
-RUN curl -s https://get.sdkman.io | bash
-RUN chmod a+x "$HOME/.sdkman/bin/sdkman-init.sh"
-RUN source "$HOME/.sdkman/bin/sdkman-init.sh";\
-    sdk install java $(sdk list java | grep -o "\b8\.[0-9]*\.[0-9]*\-tem" | head -1); \
-    sdk install sbt
-COPY hello hello
-RUN source "$HOME/.sdkman/bin/sdkman-init.sh"; cd hello; sbt run;
+RUN apt-get update;
+RUN apt-get install -y openjdk-8-jdk curl
+RUN curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && ./cs setup -y
+RUN ./cs install sbt
+ENV PATH="$PATH:/root/.local/share/coursier/bin"
